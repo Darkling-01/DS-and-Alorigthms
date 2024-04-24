@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <climits>
+#include <cmath>
+
 
 
 // Question 1
@@ -14,41 +17,53 @@ K = N/2 is finding the element in the middle(median) of the list or array.
 
 */
 
-// l = left, r = right
+
+// rearrange the elements of an array smaller to greater..
 int partition(int arr[], int l, int r){
+   int x = arr[r];    // pivot element just holds value not index
+   int L = 1; 
 
-   int x = arr[r];
-   int i = l;
-
-   for(int j = l; l <= r - 1; j++){
-      if(arr[j] < x){
-        std::swap();
-       }
-   }
-
-
+   for(int i = L; i <= r; i++){   // use '<=' to include element index r-1
+      if(arr[i] < x){
+	  std::swap(arr[L], arr[i]); 
+	  L++;	// increment element
+	}
+    }
+  
+    std::swap(arr[L], arr[r]);  // move pivot to final place
+    return L;
 }
 
-
-int quickSelect(int arr[], int l, int r, int k){
-
-
+// left <= k <= right
+int select(int arr[], int l, int r, int k){
+    if(l == r){   // if array has only one element
+      return arr[l];
+    }
+   
+    int index = partition(arr, l, r);
+    // in the final sorting postion
+    if(k == index){
+       return arr[k];
+    } 
+    else if(k < index){
+       return select(arr, l, index - 1, k);
+    }
+    else{
+       return select(arr, index + 1, r, k);
+    }
 
 }
 
 
 int main(){
+   double processing;
+   int arr[] = {10, 4, 5, 8, 6, 11, 26};
+   int n = sizeof(arr) / sizeof(arr[0]);
+   int k = 3;
 
-double processing;  // runtime 
-int arr[];
-int N = 0;
-
-
-
+   std::cout << select(arr, 0, n - 1, k) << std::endl;
 
    return 0;
 }
-
-
 
 
