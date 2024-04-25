@@ -2,14 +2,17 @@
 #include <string>
 #include <climits>
 #include <cmath>
+#include <vector>
 
+using std::vector;
+using std::string;
 
 
 // Question 1
 
 /*
 Write a program to solve the selection problem.
-Let k = N/2. Draw a table showing the running time
+Let k = N/2. 
 
 NOTES: Here N represents total number of elements in the array.
 k is the position of the element you're trying to find.
@@ -56,7 +59,7 @@ int select(int arr[], int l, int r, int k){
 
 
 int main(){
-   double processing;
+
    int arr[] = {10, 4, 5, 8, 6, 11, 26};
    int n = sizeof(arr) / sizeof(arr[0]);
    int k = 3;
@@ -65,5 +68,46 @@ int main(){
 
    return 0;
 }
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+//Question 2
+
+
+/*
+Write a program to solve the word puzzle problem
+
+
+*/
+
+ search(vector<char>& grid, vector<string>& word){
+
+    
+
+
+}
+
+
+
+
+int main(){
+
+   vector<string> words = {"dad", "to", "bad", "bat", "tap"};
+
+   vector<char> grid = {{'d', 'b', 'w'}, 
+                        {'a', 't', 'e'}, 
+                        {'d', 'p', 'o'}}; 
+
+   
+ 
+
+   return 0;
+}
+
+
+
+
+
+
 
 
