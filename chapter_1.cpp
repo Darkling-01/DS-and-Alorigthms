@@ -80,14 +80,28 @@ Write a program to solve the word puzzle problem
 
 */
 
- search(vector<char>& grid, vector<string>& word){
-
+// index is the current position
+bool findWord(int col, int row, const vector<string>& grid, const vector<string>& word, int index){
     
+    if(index == word.length())
+        return true;
+
+    // grid.size() ensures number of rows
+    // grid[0].size() ensures number of columns, [0] access the first row
+    if(col < 0 || row < 0 || row >= grid.size() || col >= grid[0].size())
+        return false;
+
+    if()
 
 
 }
 
+void search(const vector<char>& grid, const vector<string>& word){
+   
+     findWord();
 
+
+}
 
 
 int main(){
