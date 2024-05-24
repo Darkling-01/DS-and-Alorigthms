@@ -81,24 +81,50 @@ Write a program to solve the word puzzle problem
 */
 
 // index is the current position
-bool findWord(int col, int row, const vector<string>& grid, const vector<string>& word, int index){
+bool findWord(int col, int row, const vector<vector<string>>& grid, const string& word, int index, vector<vector<bool>>& visited){
     
     if(index == word.length())
         return true;
 
     // grid.size() ensures number of rows
     // grid[0].size() ensures number of columns, [0] access the first row
-    if(col < 0 || row < 0 || row >= grid.size() || col >= grid[0].size())
+    if(col < 0 || row < 0 || row >= grid.size() || col >= grid[0].size() || visited[row][col])
         return false;
 
-    if()
+    if(grid[row][col] != word[index])
+        return false;
+
+    visited[row][col] = true;
+    // recursion
+    bool found = findWord(col-1, row, grid, word, index+1, visited) || // left
+                 findWord(col+1, row, grid, word, index+1, visited) || // right
+                 findWord(col, row-1, grid, word, index+1, visited) || // up
+                 findWord(col, row+1, grid, word, index+1, visited); // down
+
+    visited[row][col] = false;
+
+    return found;
+
 
 
 }
 
 void search(const vector<char>& grid, const vector<string>& word){
    
-     findWord();
+    int rows = grid.size();
+    if(rows == 0) return false;
+    int cols = grid[0].size();
+
+    vector<vector<bool>> visited(rows, vector<bool>(cols, false));
+
+    for(int row = 0; row < rows; ++row){
+        for(int col = 0; col < cols; ++col){
+           if(findWord(col, row, grid, word, 0, visited))
+                return true;
+        }
+    }
+
+    return false;
 
 
 }
@@ -112,8 +138,17 @@ int main(){
                         {'a', 't', 'e'}, 
                         {'d', 'p', 'o'}}; 
 
-   
- 
+   string words = "dad";
+
+   vector<vector<char>> grid = {{'d', 'b', 'w'},
+                                {'a', 't', 'e'},
+                                {'d', 'p', 'o'}};
+
+    if(search(grid, words))
+        std::cout << "Words found\n";
+    else
+        std::cout << "word(s) not found\n";
+
 
    return 0;
 }
