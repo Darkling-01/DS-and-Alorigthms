@@ -176,7 +176,7 @@ class collection{
 
 public:
     void isEmpty(){}
-    void makeEmpty{}
+    void makeEmpty(){}
     void insert(){}
     void remove(){}
     void contains(){}
