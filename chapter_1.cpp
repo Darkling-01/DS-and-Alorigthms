@@ -8,7 +8,7 @@ using std::vector;
 using std::string;
 
 
-// Question 1
+// Question 1.1
 
 /*
 Write a program to solve the selection problem.
@@ -71,7 +71,7 @@ int main(){
 
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
-//Question 2
+//Question 1.2
 
 
 /*
@@ -151,6 +151,43 @@ int main(){
 
 
    return 0;
+}
+
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// question 1.13
+
+
+/*
+
+Design a class template, Collection, that stores a collection of objcets(in an array),
+along with the current size of the collection. Provide public function isEmpty, makeEmpty,
+insert, remove, and contains. Contains(x) returns true if and only if an object that is
+equal to x is present in the collection.
+
+
+*/
+
+
+template<typename Objects>
+class collection{
+    Objects array[collection.size()];
+
+public:
+    void isEmpty(){}
+    void makeEmpty{}
+    void insert(){}
+    void remove(){}
+    void contains(){}
+
+};
+
+
+int main(){
+
+
+    return 0;
 }
 
 
