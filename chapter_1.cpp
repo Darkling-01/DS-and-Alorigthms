@@ -178,14 +178,29 @@ public:
     void isEmpty(){}
     void makeEmpty(){}
     void insert(){}
-    void remove(){}
+
+    void remove(Objects arr[], Objects x, Objects n){ 
+        for(int i = 0; i <= n; ++i){
+           if(arr[i] == x)
+              break;
+        }
+
+        if(arr[i] == x){ 
+    
+            
+        }   
+    }
+
+
     void contains(){}
 
 };
 
 
 int main(){
-
+    int arr[] = {1, 3, 4, 55, 23, 9}; 
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 7; 
 
     return 0;
 }
