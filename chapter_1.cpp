@@ -177,18 +177,32 @@ class collection{
 public:
     void isEmpty(){}
     void makeEmpty(){}
-    void insert(){}
+
+    int insert(Objects arr[], Objects x, Objects n){ 
+        arr[n] = x;
+        n++;
+        std::cout << "New Array:\n";
+        for(int i = 0; i <= n; i++){
+            std::cout << arr[i] << std::endl;
+        }    
+    } 
 
     void remove(Objects arr[], Objects x, Objects n){ 
-        for(int i = 0; i <= n; ++i){
+        int i = 0;
+	for(i; i <= n; ++i){
            if(arr[i] == x)
               break;
         }
 
-        if(arr[i] == x){ 
+        if(i < n){ 
+          n-=1;
+          for(int j = i; j < n; ++j ){
+              arr[j] = arr[j + 1]; 
+           }
     
-            
-        }   
+	}
+        return n;
+
     }
 
 
