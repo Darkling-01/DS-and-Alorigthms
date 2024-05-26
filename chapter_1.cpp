@@ -171,13 +171,31 @@ equal to x is present in the collection.
 
 
 template<typename Objects>
-class collection{
-    Objects array[collection.size()];
+class Collection{
+    Objects *array;   // pointer dynamically allocate array
+    int currentSize;
+    int capacity;
 
 public:
-    void isEmpty(){}
-    void makeEmpty(){}
+    // Constructor
+    Collection(int capacity) : capacity(capacity){
+        array = new Objects[capacity];
+    }
+    // deconstructor to avoid memory leakage
+    ~Collection(){
+        delete[] array;
+    }
 
+    // checks if collection is empty
+    bool isEmpty()const {
+        return currentSize == 0;
+    }
+
+    int makeEmpty(){
+        return currentSize = 0;
+    }
+
+    // need to fix the parameters for 'insert' and 'remove' functions
     int insert(Objects arr[], Objects x, Objects n){ 
         arr[n] = x;
         n++;
@@ -206,15 +224,15 @@ public:
     }
 
 
-    void contains(){}
+    //void contains(){}
 
 };
 
 
 int main(){
-    int arr[] = {1, 3, 4, 55, 23, 9}; 
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int x = 7; 
+    Collection<int> Collection(6);
+   // {1, 3, 4, 55, 23, 9};
+   // insert goes here 
 
     return 0;
 }
