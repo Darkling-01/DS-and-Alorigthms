@@ -195,44 +195,56 @@ public:
         return currentSize = 0;
     }
 
-    // need to fix the parameters for 'insert' and 'remove' functions
-    int insert(Objects arr[], Objects x, Objects n){ 
-        arr[n] = x;
-        n++;
-        std::cout << "New Array:\n";
-        for(int i = 0; i <= n; i++){
-            std::cout << arr[i] << std::endl;
-        }    
-    } 
-
-    void remove(Objects arr[], Objects x, Objects n){ 
-        int i = 0;
-	for(i; i <= n; ++i){
-           if(arr[i] == x)
-              break;
+    // add more elements to the array if enough capacity.
+    int insert(const Objects& n){
+        if(currentSize < capacity)  
+           array[currentSize++] = n;
+        else
+           std::cout << "Collection is full to enter another element" << std::endl;
+    }
+    // remove element from array.... but it doesn't work yet
+    int remove(int index){
+        if(index >= 0 && index < currentSize){
+           for(int i = index; i < currentSize - 1; ++i){
+               array[i] = array[i + 1];
+            }
+         currentSize--;
         }
-
-        if(i < n){ 
-          n-=1;
-          for(int j = i; j < n; ++j ){
-              arr[j] = arr[j + 1]; 
-           }
-    
-	}
-        return n;
-
+        
+        else{std::cout << "Invalid index..." << std::endl;}
     }
 
-
+    // this functin will search the arrray if it contains specify number
     //void contains(){}
+
+    // prints the entire array 
+    void print() {
+     std::cout << "Collection contents: " << std::endl;
+     for(int i = 0; i < currentSize; ++i){
+           std::cout << array[i] << std::endl;
+        }
+
+    }
 
 };
 
 
 int main(){
     Collection<int> Collection(6);
-   // {1, 3, 4, 55, 23, 9};
-   // insert goes here 
+
+    Collection.insert(1);
+    Collection.insert(3);
+    Collection.insert(4);
+    Collection.insert(55);
+    Collection.insert(23);
+    Collection.insert(9);
+
+    Collection.print();
+
+    int removeNum = 55;
+    Collection.remove(removeNum);
+    Collection.print();
+
 
     return 0;
 }
