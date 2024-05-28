@@ -196,22 +196,22 @@ public:
     }
 
     // add more elements to the array if enough capacity.
-    int insert(const Objects& n){
+    void insert(const Objects& n){
         if(currentSize < capacity)  
            array[currentSize++] = n;
         else
            std::cout << "Collection is full to enter another element" << std::endl;
     }
     // remove element from array.... but it doesn't work yet
-    int remove(int index){
-        if(index >= 0 && index < currentSize){
-           for(int i = index; i < currentSize - 1; ++i){
-               array[i] = array[i + 1];
-            }
-         currentSize--;
-        }
-        
-        else{std::cout << "Invalid index..." << std::endl;}
+    void remove(const Objects& index){
+        for(int i = 0; i < currentSize; ++i){
+            if(array[i] == index){
+               for(int j = i; j < currentSize - 1; ++j){
+                   array[j] = array[j + 1]; 
+                }   
+            }   
+           currentSize--;
+        }  
     }
 
     // this functin will search the arrray if it contains specify number
@@ -238,8 +238,6 @@ int main(){
     Collection.insert(55);
     Collection.insert(23);
     Collection.insert(9);
-
-    Collection.print();
 
     int removeNum = 55;
     Collection.remove(removeNum);
