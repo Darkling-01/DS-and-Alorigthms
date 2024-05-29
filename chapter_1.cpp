@@ -210,12 +210,20 @@ public:
                    array[j] = array[j + 1]; 
                 }   
             }   
-           currentSize--;
         }  
+	currentSize--;
     }
 
-    // this functin will search the arrray if it contains specify number
-    //void contains(){}
+    // return true if object is equal to x
+    bool contains(int x){
+	for(int i = 0; i < currentSize; ++i){
+	   if(array[i] == x)
+	      return true;
+	}
+	return false;
+    }
+    
+    
 
     // prints the entire array 
     void print() {
@@ -243,6 +251,12 @@ int main(){
     Collection.remove(removeNum);
     Collection.print();
 
+    int x = 4;
+    isFound = Collection.contains(x);
+    if(isFound)
+	std::cout << "Value is found: " << x << std::endl;
+    else
+	std::cout << "No value is found" << std::endl;
 
     return 0;
 }
