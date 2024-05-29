@@ -261,4 +261,28 @@ int main(){
     return 0;
 }
 
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// question 1.15
 
+/*
+Define a Rectangle class that provides getLength and getWidth. Using the findMax
+routine. Write a main that creates an array of Rectangle and finds the largest Rectangle
+first on the basis of area and then on the basic of perimeter.
+*/
+
+template<typename Object, typename Comparator>
+
+class Rectangle{
+public:
+    
+    void getLength(){}
+    void getWidth(){}
+};
+
+int main(){
+    // specify array here
+        
+
+    return 0;
+}
