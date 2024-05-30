@@ -271,14 +271,25 @@ routine. Write a main that creates an array of Rectangle and finds the largest R
 first on the basis of area and then on the basic of perimeter.
 */
 
+// template A 
 template<typename Object, typename Comparator>
+const Object& findMax(const Object arr[], Comparator isLessThan){
+        //code here
+}
 
 class Rectangle{
 public:
-    
+        
     void getLength(){}
+
     void getWidth(){}
 };
+
+template<typename Object>
+const Object& findMax(const Object arr[]){
+        //code here
+}
+
 
 int main(){
     // specify array here
