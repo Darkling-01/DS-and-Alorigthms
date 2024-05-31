@@ -195,37 +195,35 @@ public:
         return currentSize = 0;
     }
 
-    // add more elements to the array if enough capacity.
     void insert(const Objects& n){
-        if(currentSize < capacity)  
+        if(currentSize < capacity)
            array[currentSize++] = n;
         else
            std::cout << "Collection is full to enter another element" << std::endl;
     }
-    // remove element from array.... but it doesn't work yet
-    void remove(const Objects& index){
+
+    void remove(int index){
         for(int i = 0; i < currentSize; ++i){
             if(array[i] == index){
-               for(int j = i; j < currentSize - 1; ++j){
-                   array[j] = array[j + 1]; 
-                }   
-            }   
-        }  
-	currentSize--;
-    }
+             for(int j = i; j < currentSize - 1; ++j){
+              array[j] = array[j+1];
+              }
+            }
+        }
 
+        currentSize--;
+    }
     // return true if object is equal to x
     bool contains(int x){
-	for(int i = 0; i < currentSize; ++i){
-	   if(array[i] == x)
-	      return true;
-	}
-	return false;
+        for(int i = 0; i < currentSize; ++i){
+           if(array[i] == x){
+              return true;
+           }
+        }
+        return false;
     }
-    
-    
 
-    // prints the entire array 
+
     void print() {
      std::cout << "Collection contents: " << std::endl;
      for(int i = 0; i < currentSize; ++i){
@@ -247,53 +245,79 @@ int main(){
     Collection.insert(23);
     Collection.insert(9);
 
-    int removeNum = 55;
-    Collection.remove(removeNum);
+    Collection.remove(3);
     Collection.print();
 
-    int x = 4;
-    isFound = Collection.contains(x);
-    if(isFound)
-	std::cout << "Value is found: " << x << std::endl;
+    int x = 5;
+    bool isContain = Collection.contains(x);
+    if(isContain)
+        std::cout << "Value contains: " << x << std::endl;
     else
-	std::cout << "No value is found" << std::endl;
-
+        std::cout << "No value is found" << std::endl;
     return 0;
 }
+
 
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 // question 1.15
 
+
 /*
 Define a Rectangle class that provides getLength and getWidth. Using the findMax
 routine. Write a main that creates an array of Rectangle and finds the largest Rectangle
 first on the basis of area and then on the basic of perimeter.
+
 */
 
-// template A 
-template<typename Object, typename Comparator>
-const Object& findMax(const Object arr[], Comparator isLessThan){
-        //code here
-}
 
 class Rectangle{
+
+private:
+    double length;
+    double width;
+
 public:
-        
-    void getLength(){}
 
-    void getWidth(){}
+    explicit Rectangle(double l = 0.0, double w = 0.0) : length(l), width(w){}
+
+    double getLength() const{
+        return length;
+    }   
+
+    double getWidth() const{
+        return width;
+    }   
+    // returning the area and perimeter using basic formulas
+    double getArea() const{
+        return width * length;
+    }   
+
+    double getPerimeter() const{
+        return 2 * (width * length);
+    }   
+
+
 };
-
+// overloarding the less than operator
+// will compare the left hand side with the right hand side
 template<typename Object>
-const Object& findMax(const Object arr[]){
-        //code here
+bool operator<(const Rectangle& rhs) const{
+        if(getArea() != rhs.getArea())
+           return (getArea() < rhs.getArea());
+        else
+           return (getPerimeter < rhs.getPerimeter());
 }
+
 
 
 int main(){
+    Rectangle r;
     // specify array here
-        
-
+    vector<Rectangle> arr = {Rectangle{8, 4}, Rectangle{12, 5}};
+    findMax(arr);
+    
     return 0;
 }
+
+

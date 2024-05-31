@@ -1,5 +1,5 @@
-#define CHAPTER_1
-#ifndef CHAPTER_1
+#define CHAPTER_1_HPP
+#ifndef CHAPTER_1_HPP
 
 #include <vector>
 using std::vector;
@@ -14,6 +14,7 @@ const Object& findMax(const vector<comparable>& comp){
 	   if(cmp[maxIndex] < cmp[i])
 	      maxIndex = i; 
 	}
+	return cmp[maxIndex];
 }
 
 
